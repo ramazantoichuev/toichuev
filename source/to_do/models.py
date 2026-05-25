@@ -1,3 +1,16 @@
 from django.db import models
 
-# Create your models here.
+
+STATUS_CHOICES = [
+    ('new', 'Новая'),
+    ('in_progress', 'В процессе'),
+    ('done', 'Сделано'),
+]
+
+class Task(models.Model):
+    description = models.TextField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
+    due_date = models.DateField(null=True, blank=True)
+
+    def str(self):
+        return f"{self.description} ({self.get_status_display()})"
