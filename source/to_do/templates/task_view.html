@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Task</title>
+</head>
+<body>
+    <h1>Task:</h1>
+    <h2>{{ task.description }}</h2>
+    <p>Status: {{ task.status }}</p>
+    <p>Due date: {{ task.due_date|default:"нет даты" }}</p>
+</body>
+</html>
