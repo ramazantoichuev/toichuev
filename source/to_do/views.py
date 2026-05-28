@@ -1,5 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.shortcuts import render, get_object_or_404, redirect
 
 from to_do.models import Task
 
@@ -9,15 +9,10 @@ def tasks(request):
     tasks = Task.objects.all()
     return render(request, "articles/index.html", {"tasks": tasks})
 
-def task(request):
-    id = request.GET.get('id')
-    if id:
-        try:
-            task = Task.objects.get(id=int(id))
-            return render(request, "articles/task_view.html", {"task": task})
-        except Task.DoesNotExist:
-            return HttpResponseRedirect("/tasks")
-    return HttpResponseRedirect("/tasks")
+def task(request, id):
+    task = get_object_or_404(Task, id=id)
+    return render(request, "articles/task_view.html", {"task": task})
+
 
 def task_create_view(request):
     if request.method == 'GET':
@@ -29,8 +24,8 @@ def task_create_view(request):
             status=request.POST.get("status", "new"),
             due_date=request.POST.get("due_date") or None,
         )
-        return HttpResponseRedirect("/tasks")
+        return redirect("/tasks")
 
 def task_delete_view(request, id):
     Task.objects.filter(id=id).delete()
-    return HttpResponseRedirect("/tasks")
+    return redirect("/tasks")

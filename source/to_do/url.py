@@ -5,6 +5,6 @@ urlpatterns = [
 path("", tasks),
     path("tasks/", tasks),
     path("task/create/", task_create_view),
-    path("task/", task),
+    path("task/<int:id>/", task),
     path("tasks/delete/<int:id>/", task_delete_view)
 ]
