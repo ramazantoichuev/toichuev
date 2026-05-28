@@ -14,7 +14,7 @@
                 <h5 class="card-title">{{ task.description }}</h5>
                 <p class="card-text">Статус: {{ task.status }}</p>
                 <p class="card-text">Дата: {{ task.due_date|default:"нет даты" }}</p>
-                <a href="/task?id={{ task.id }}" class="card-link">Просмотр</a>
+                <a href="/task/{{ task.id }}" class="card-link">Просмотр</a>
                 <a href="/tasks/delete/{{ task.id }}" class="card-link">Удалить</a>
             </div>
         </div>
