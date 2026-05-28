@@ -6,5 +6,5 @@ path("", tasks),
     path("tasks/", tasks),
     path("task/create/", task_create_view),
     path("task/<int:id>/", task),
-    path("tasks/delete/<int:id>/", task_delete_view)
+    path("task/delete/<int:id>/", task_delete_view)
 ]

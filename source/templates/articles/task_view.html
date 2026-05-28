@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Task</title>
-</head>
-<body>
-    <h1>Task:</h1>
-    <h2>Description:{{ task.description }}</h2>
-    <h3>Detail_description:{{ task.detail_description }}</h3>
-    <p>Status: {{ task.status }}</p>
-    <p>Due date: {{ task.due_date|default:"нет даты" }}</p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block nav %}
+    <a class="nav-link" href="/task/create/">Добавить статью</a>
+{% endblock %}
+{% block content %}
+
+    <div class="card mb-3">
+        <div class="card-header ">
+            <h5 class="card-title">Название: {{ task.description }}</h5>
+        </div>
+        <div class="card-body text-secondary d-flex flex-column">
+            <p>Описание: {{ task.detail_description }}</p>
+            <p>Статус: {{ task.status }}</p>
+            <p>Срок до: {{ task.due_date }}</p>
+        </div>
+    </div>
+{% endblock %}
