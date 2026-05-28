@@ -9,6 +9,7 @@ STATUS_CHOICES = [
 
 class Task(models.Model):
     description = models.TextField()
+    detail_description = models.TextField(max_length=5000, null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
     due_date = models.DateField(null=True, blank=True)
 

@@ -25,6 +25,7 @@ def task_create_view(request):
     elif request.method == 'POST':
         Task.objects.create(
             description=request.POST.get("description"),
+            detail_description=request.POST.get("detail_description"),
             status=request.POST.get("status", "new"),
             due_date=request.POST.get("due_date") or None,
         )

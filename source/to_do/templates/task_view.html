@@ -6,7 +6,8 @@
 </head>
 <body>
     <h1>Task:</h1>
-    <h2>{{ task.description }}</h2>
+    <h2>Description:{{ task.description }}</h2>
+    <h3>Detail_description:{{ task.detail_description }}</h3>
     <p>Status: {{ task.status }}</p>
     <p>Due date: {{ task.due_date|default:"нет даты" }}</p>
 </body>
